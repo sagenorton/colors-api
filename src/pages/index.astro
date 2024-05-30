@@ -6,7 +6,7 @@ import '../styles/global.css';
 
 
 // data source
-const source = 'https://www.csscolorsapi.com/api/colors';
+const source = 'https://rickandmortyapi.com/api/character';
 // fetch the data
 const res = await fetch(source); 
 // store retreived data
@@ -27,7 +27,7 @@ const data = await res.json();
 	<body>
 		
 		<header class="masthead">
-			<h1 class="site-title">Gallery</h1>
+			<h1 class="site-title">Rick and Morty Gallery</h1>
 		</header>
 
 		<main id="content" class="main-area">
@@ -36,21 +36,25 @@ const data = await res.json();
 		  
 				<!-- Your API Data -->
 				{
-					data.colors.map( (item) => 
+					data.results.map( (item) => 
 
-					<li class="card-item" style={{ background: item.name}}>
+					<li class="card-item">
       
       				<!-- Make card clickable  -->
       				<a href="#">
         
         			<!-- Content for Card -->
         			<figure class="card">
+
+						<img src={item.image} alt="Character Image">
           			
 						<figcaption class="caption">
             	
 							<h3 class="caption-title">{item.name}</h3>
            
-								<p>Within color group: {item.group}</p>
+								<p>Status: {item.status}</p>
+								<p>Species: {item.species}</p>
+								<p>Gender: {item.gender}</p>
 
           </figcaption>
         </figure>
